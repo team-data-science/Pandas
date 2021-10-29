@@ -1,4 +1,5 @@
 import pandas as pd
+import datetime as dt
 
 
 # read dataset
@@ -9,8 +10,13 @@ print(df)
 print(df.dtypes)
 
 
+# turn epoch into a timestamp
+df['TimeStamp'] = df['time'].apply(lambda s : dt.datetime.fromtimestamp(s).strftime('%Y-%m-%d %H:%M:%S'))
+print(df)
+
+
 # define the columns we want to keep
-colums_we_want = ['time','Dishwasher [kW]','Furnace 1 [kW]','Microwave [kW]']
+colums_we_want = ['TimeStamp','Dishwasher [kW]','Furnace 1 [kW]','Microwave [kW]']
 
 #filter for these columns and print
 df_filter = df.filter(items = colums_we_want )
@@ -23,6 +29,7 @@ print(df_filter)
 
 
 # turn the columns and values into variable and value column
-df_melted = df_filter.melt(id_vars = ['time','House_ID'])
+df_melted = df_filter.melt(id_vars = ['TimeStamp','House_ID'])
 print(df_melted)
+
 
