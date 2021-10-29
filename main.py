@@ -16,10 +16,10 @@ print(df)
 
 
 # define the columns we want to keep
-colums_we_want = ['TimeStamp','Dishwasher [kW]','Furnace 1 [kW]','Microwave [kW]']
+#
 
-#filter for these columns and print
-df_filter = df.filter(items = colums_we_want )
+#filter for these columns and print could also do this as a list: colums_we_want = ['TimeStamp','Dishwasher [kW]','Furnace 1 [kW]','Microwave [kW]']
+df_filter = df.filter(items = ['TimeStamp','Dishwasher [kW]','Furnace 1 [kW]','Microwave [kW]'] )
 print(df_filter)
 
 
